@@ -1,0 +1,19 @@
+{
+  "name": "hora-do-faro-bot",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/Rotciv18/hora-do-fato-bot",
+  "author": "Victor Batista",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.18",
+    "sucrase": "^3.21.1"
+  }
+}
