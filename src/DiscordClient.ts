@@ -1,4 +1,5 @@
 import { Client, Intents } from 'discord.js';
+import AudioInterval from './app/services/AudioInterval';
 
 class DiscordApp {
   discordClient: Client;
@@ -11,6 +12,12 @@ class DiscordApp {
         Intents.FLAGS.GUILD_VOICE_STATES,
       ],
     });
+
+    this.setAudioInterval();
+  }
+
+  setAudioInterval() {
+    AudioInterval.call();
   }
 }
 
