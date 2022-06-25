@@ -19,6 +19,8 @@
   "dependencies": {
     "@discordjs/opus": "^0.7.0",
     "@discordjs/voice": "^0.10.0",
+    "@types/bull": "^3.15.8",
+    "bull": "^4.8.4",
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "eslint": "^7.32.0 || ^8.2.0",

@@ -7,7 +7,6 @@ class GetMostMembersChannel {
 
     guild.channels.cache.forEach((channel) => {
       if (channel.type !== 'GUILD_VOICE') return;
-      console.log(`${channel.name} -------- ${channel.members.size}`);
 
       if (channel.members.size > maxMembers) {
         maxMembers = channel.members.size;
