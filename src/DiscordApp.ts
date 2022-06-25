@@ -1,13 +1,11 @@
-import { Client, Intents } from 'discord.js';
+import DiscordClient from './DiscordClient';
+import { Client } from 'discord.js';
 
 class DiscordApp {
-  discordClient: Client;
-
+  app: Client;
   constructor() {
-    this.discordClient = new Client({
-      intents: [Intents.FLAGS.GUILDS],
-    });
+    this.app = DiscordClient;
   }
 }
 
-export default new DiscordApp().discordClient;
+export default new DiscordApp().app;
