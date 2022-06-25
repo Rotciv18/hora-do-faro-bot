@@ -16,6 +16,5 @@ export default () => {
 
   const delay = Math.floor(Math.random() * 300000) + 300000;
 
-  console.log(new Date().toString());
   GuildAudioManagerQueue.add({}, { delay });
 };
