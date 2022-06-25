@@ -5,8 +5,8 @@ class DiscordApp {
 
   constructor() {
     this.discordClient = new Client({
-      intents: [Intents.FLAGS.GUILDS]
-    })
+      intents: [Intents.FLAGS.GUILDS],
+    });
   }
 }
 
