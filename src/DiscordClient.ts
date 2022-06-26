@@ -1,4 +1,7 @@
+import 'dotenv/config';
 import { Client, Intents } from 'discord.js';
+import AddToConnectChannelQueueService from './app/services/guilds/AddToConnectChannelQueueService';
+import AudioPlayerQueue from './app/queues/AudioPlayerQueue';
 
 class DiscordApp {
   discordClient: Client;
@@ -10,6 +13,15 @@ class DiscordApp {
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_VOICE_STATES,
       ],
+    });
+
+    this.clientEvents();
+  }
+
+  clientEvents() {
+    this.discordClient.on('guildCreate', (guild) => {
+      AddToConnectChannelQueueService.call(guild.id);
+      AudioPlayerQueue.add({ guildId: guild.id }, { delay: 7000 });
     });
   }
 }

@@ -1,14 +1,16 @@
 import app from './DiscordClient';
-import 'dotenv/config';
-import GuildAudioManagerQueue from './app/queues/GuildAudioManagerQueue';
-import GuildAudioManagerJob from './app/jobs/GuildAudioManagerJob';
+import ConnectToChannelQueue from './app/queues/ConnectToChannelQueue';
+import ConnectToChannelJob from './app/jobs/ConnectToChannelJob';
+import AudioPlayerQueue from './app/queues/AudioPlayerQueue';
+import AudioPlayerJob from './app/jobs/AudioPlayerJob';
 
 try {
   app.login(process.env.APPLICATION_TOKEN);
 
-  app.once('ready', () => {
+  app.once('ready', (client) => {
     try {
-      GuildAudioManagerQueue.process(GuildAudioManagerJob);
+      ConnectToChannelQueue.process(ConnectToChannelJob);
+      AudioPlayerQueue.process(AudioPlayerJob);
     } catch (er) {
       console.log(er);
     }

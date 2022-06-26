@@ -1,6 +1,6 @@
 import Queue from 'bull';
 
-export default new Queue('GuildAudioManagerQueue', {
+export default new Queue('ConnectToChannelQueue', {
   redis: {
     password: process.env.REDIS_PASSWORD,
     host: process.env.REDIS_HOST,
