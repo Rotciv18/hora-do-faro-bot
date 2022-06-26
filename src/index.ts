@@ -14,6 +14,8 @@ try {
     } catch (er) {
       console.log(er);
     }
+
+    // client.guilds.cache.forEach((g) => g.leave());
   });
 } catch (error) {
   console.log(error);

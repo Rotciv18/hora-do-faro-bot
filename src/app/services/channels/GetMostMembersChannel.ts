@@ -1,15 +1,15 @@
-import { Guild, GuildBasedChannel, GuildMember } from 'discord.js';
+import { Guild, StageChannel, VoiceChannel } from 'discord.js';
 
 class GetMostMembersChannel {
-  call(guild: Guild | undefined): GuildBasedChannel | null {
+  call(guild: Guild | undefined): StageChannel | VoiceChannel | undefined {
     if (!guild) {
-      return null;
+      return;
     }
-    let maxMembersChannel: GuildBasedChannel | null = null;
+    let maxMembersChannel: StageChannel | VoiceChannel | undefined = undefined;
     let maxMembers = 0;
 
     guild.channels.cache.forEach((channel) => {
-      if (!channel.isVoice()) return;
+      if (!channel.isVoice() || !channel.joinable) return null;
 
       let membersSize = 0;
       channel.members.forEach((guildMember) => {
