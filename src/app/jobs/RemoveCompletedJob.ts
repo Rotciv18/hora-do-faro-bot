@@ -15,5 +15,5 @@ export default async () => {
 
   await Promise.all(promises1.concat(promises2.concat(promises3)));
 
-  RemoveCompletedQueue.add({}, { delay: 1800000 });
+  await RemoveCompletedQueue.add({}, { delay: 1800000 });
 };
