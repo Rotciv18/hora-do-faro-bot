@@ -3,6 +3,8 @@ import ConnectToChannelQueue from './app/queues/ConnectToChannelQueue';
 import ConnectToChannelJob from './app/jobs/ConnectToChannelJob';
 import AudioPlayerQueue from './app/queues/AudioPlayerQueue';
 import AudioPlayerJob from './app/jobs/AudioPlayerJob';
+import RemoveCompletedQueue from './app/queues/RemoveCompletedQueue';
+import RemoveCompletedJob from './app/jobs/RemoveCompletedJob';
 
 try {
   app.login(process.env.APPLICATION_TOKEN);
@@ -11,6 +13,7 @@ try {
     try {
       ConnectToChannelQueue.process(ConnectToChannelJob);
       AudioPlayerQueue.process(AudioPlayerJob);
+      RemoveCompletedQueue.process(RemoveCompletedJob);
     } catch (er) {
       console.log(er);
     }
