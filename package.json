@@ -6,7 +6,9 @@
   "author": "Victor Batista",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "stop": "pm2 delete all",
+    "build-and-run": "yarn tsc && pm2 start dist/src/index.js"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.29.0",
