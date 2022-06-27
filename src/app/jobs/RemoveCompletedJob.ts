@@ -9,9 +9,15 @@ export default async () => {
   const completedRemoveCompletedQueues =
     await RemoveCompletedQueue.getCompleted();
 
-  const promises1 = completedAudioPlayerQueues.map((q) => q.remove());
-  const promises2 = completedConnectToChannelQueues.map((q) => q.remove());
-  const promises3 = completedRemoveCompletedQueues.map((q) => q.remove());
+  const promises1 = completedAudioPlayerQueues.map(
+    async (q) => await q.remove()
+  );
+  const promises2 = completedConnectToChannelQueues.map(
+    async (q) => await q.remove()
+  );
+  const promises3 = completedRemoveCompletedQueues.map(
+    async (q) => await q.remove()
+  );
 
   await Promise.all(promises1.concat(promises2.concat(promises3)));
 
