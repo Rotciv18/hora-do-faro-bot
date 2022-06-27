@@ -16,7 +16,7 @@ export default async (job: IConnectToChannelQueue) => {
   const connection = getVoiceConnection(guildId);
 
   if (!connection) {
-    AudioPlayerQueue.add({ guildId }, { delay });
+    await AudioPlayerQueue.add({ guildId }, { delay });
     return;
   }
 

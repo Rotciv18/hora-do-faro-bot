@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { Client, Intents } from 'discord.js';
 import AddToConnectChannelQueueService from './app/services/guilds/AddToConnectChannelQueueService';
 import AudioPlayerQueue from './app/queues/AudioPlayerQueue';
+import RemoveByGuildIdService from './app/services/queues/AudioPlayerQueue/RemoveByGuildIdService';
 
 class DiscordApp {
   discordClient: Client;
@@ -26,6 +27,12 @@ class DiscordApp {
       } catch (error) {
         console.log(error);
       }
+    });
+
+    // Removing only the AudioPlayerQueue on guildDelete.
+    // The ConnectChannelQueue will be removed as soon as it process
+    this.discordClient.on('guildDelete', async (guild) => {
+      await RemoveByGuildIdService.call(guild.id);
     });
   }
 }
