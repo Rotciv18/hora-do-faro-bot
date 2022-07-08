@@ -40,5 +40,5 @@ export default async function (job: IConnectToChannelQueue) {
     }
   }
 
-  ConnectToChannelQueue.add({ guildId }, { delay: 1000 });
+  await ConnectToChannelQueue.add({ guildId }, { delay: 1000 });
 }

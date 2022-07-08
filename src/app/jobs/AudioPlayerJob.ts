@@ -25,5 +25,5 @@ export default async (job: IConnectToChannelQueue) => {
 
   PlayAudioService.call(connection, audioDirectory);
 
-  AudioPlayerQueue.add({ guildId }, { delay });
+  await AudioPlayerQueue.add({ guildId }, { delay });
 };
