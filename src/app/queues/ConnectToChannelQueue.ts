@@ -6,4 +6,9 @@ export default new Queue('ConnectToChannelQueue', {
     host: process.env.REDIS_HOST,
     port: parseInt(process.env.REDIS_PORT as string),
   },
+  settings: {
+    lockDuration: 12000000,
+    lockRenewTime: 600000,
+    maxStalledCount: 0,
+  },
 });
