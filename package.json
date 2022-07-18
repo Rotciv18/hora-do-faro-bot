@@ -10,11 +10,13 @@
     "stop": "pm2 delete all",
     "build-and-run": "yarn tsc && pm2 start dist/index.js",
     "clear-queue": "nodemon scripts/clearQueue.ts",
-    "add-queues": "nodemon scripts/startAllGuildQueues.ts"
+    "add-queues": "nodemon scripts/startAllGuildQueues.ts",
+    "bull-dashboard": "REDIS_HOST=redis-14950.c98.us-east-1-4.ec2.cloud.redislabs.com REDIS_PASSWORD=B8MMQqt40j82xloo0GULu4bEjS3ip4rf REDIS_PORT=14950 npx bull-dashboard@latest"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "bull-dashboard": "^5.1.2",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
     "ts-node": "^10.8.1",

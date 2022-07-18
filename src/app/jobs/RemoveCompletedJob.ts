@@ -1,8 +1,9 @@
+import { DoneCallback, Job } from 'bull';
 import AudioPlayerQueue from '../queues/AudioPlayerQueue';
 import ConnectToChannelQueue from '../queues/ConnectToChannelQueue';
 import RemoveCompletedQueue from '../queues/RemoveCompletedQueue';
 
-export default async () => {
+export default async (job: Job, done: DoneCallback) => {
   const completedAudioPlayerQueues = await AudioPlayerQueue.getCompleted();
   const completedConnectToChannelQueues =
     await ConnectToChannelQueue.getCompleted();
@@ -21,5 +22,6 @@ export default async () => {
 
   await Promise.all(promises1.concat(promises2.concat(promises3)));
 
-  await RemoveCompletedQueue.add({}, { delay: 600000 });
+  await RemoveCompletedQueue.add({}, { delay: 60000 });
+  done();
 };

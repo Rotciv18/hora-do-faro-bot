@@ -22,8 +22,8 @@ class DiscordApp {
   clientEvents() {
     this.discordClient.on('guildCreate', async (guild) => {
       try {
-        AddToConnectChannelQueueService.call(guild.id);
-        AudioPlayerQueue.add({ guildId: guild.id }, { delay: 7000 });
+        await AddToConnectChannelQueueService.call(guild.id);
+        await AudioPlayerQueue.add({ guildId: guild.id }, { delay: 7000 });
       } catch (error) {
         console.log(error);
       }

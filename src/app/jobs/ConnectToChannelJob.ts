@@ -9,12 +9,17 @@ import {
 
 import ConnectToChannelQueue from '../queues/ConnectToChannelQueue';
 import { VoiceChannel } from 'discord.js';
+import { DoneCallback } from 'bull';
 
-export default async function (job: IConnectToChannelQueue) {
+export default async function (
+  job: IConnectToChannelQueue,
+  done: DoneCallback
+) {
   const { guildId } = job.data;
 
   const guild = DiscordClient.guilds.cache.get(guildId);
   if (!guild) {
+    done();
     return;
   }
   const channel = GetMostMembersChannel.call(guild);
@@ -41,4 +46,5 @@ export default async function (job: IConnectToChannelQueue) {
   }
 
   await ConnectToChannelQueue.add({ guildId }, { delay: 1000 });
+  done();
 }
